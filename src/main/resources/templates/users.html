@@ -1,0 +1,32 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User List</title>
+</head>
+<body>
+<h1>Users:</h1>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+    </tr>
+
+    <tr th:each="user: ${users}">
+        <td th:text ="${user.id}"></td>
+        <td><a th:href="@{/users/{id}(id=${user.id})}" th:text="${user.name}"></a></td>
+        <td th:text ="${user.email}"></td>
+    </tr>
+    <h2>Add a user</h2>
+    <form action="/users" method="post">
+        Name: <input type="text" name="name"><br />
+        Email: <input type="text" step="any" name="email"><br />
+        <button type="submit">Add user</button>
+    </form>
+</table>
+
+
+
+
+
+</body>
+</html>
